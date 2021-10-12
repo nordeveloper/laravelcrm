@@ -16,9 +16,9 @@ class IndexController extends AppController
 
         $result['users_count'] = User::count();
 
-        $emailData['text'] = 'test data';
+        // $emailData['text'] = 'test data';
 
-        Mail::to('info@webix.am')->send(new MeilSend('emails.test', $emailData));
+        // Mail::to('info@webix.am')->send(new MeilSend('emails.test', $emailData));
 
         return view('dashboard.index', ['result'=>$result]);
     }

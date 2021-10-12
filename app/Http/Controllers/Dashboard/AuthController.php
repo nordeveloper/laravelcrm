@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
 
-// use App\User;
+use App\Models\User;
 use Illuminate\Http\Request;
 // use App\Providers\RouteServiceProvider;
 // use Illuminate\Foundation\Auth\AuthenticatesUsers;
@@ -18,7 +18,14 @@ class AuthController extends Controller
 
     function index(){
 
-        return view('dashboard.auth.login');
+        if( !Auth::check() ){
+
+            return view('dashboard.auth.login', ['errors'=>'']);
+
+        }else{
+
+            return redirect('/dashboard');
+        }
     }
 
 
@@ -29,13 +36,31 @@ class AuthController extends Controller
            'password' => 'required|string',
         ]);   
 
-        $credentials = $request->only('email', 'password');        
-
-        if (Auth::attempt($credentials)) {
-           return redirect()->intended('dashboard');
-        }else{
-            return view('dashboard.auth.login');
+        $credentials = $request->only('email', 'password');   
+        
+        $remember = false;
+        if($request->$remember){
+            $remember = true;
         }
+
+        // dump($credentials);
+
+        if ( Auth::attempt($credentials, $remember) ) {
+            
+            // $user = User::find(Auth::id());
+            // $user->last_login = date('Y-m-d H:i:s');
+            // $user->save();
+
+            return redirect()->intended('dashboard');
+
+        }else{
+
+            return view('dashboard.auth.login', ['errors'=>'Invalid login or password']);
+        }
+
+        // $this->guard()->attempt(
+        //     $this->credentials($request), $request->filled('remember')
+        // );
     }
 
     public function resetpassword()
@@ -53,5 +78,6 @@ class AuthController extends Controller
 
         return "OK";
     }
+
 
 }

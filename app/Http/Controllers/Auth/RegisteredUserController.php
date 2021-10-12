@@ -34,7 +34,7 @@ class RegisteredUserController extends Controller
     public function store(Request $request)
     {
 
-        $v = $request->validate([
+        $request->validate([
             'name' => 'string|max:255',
             'last_name' => 'string|max:255',
             'second_name' => 'string|max:255',

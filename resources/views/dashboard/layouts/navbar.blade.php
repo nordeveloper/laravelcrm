@@ -7,17 +7,14 @@
             <a class="nav-link" data-widget="pushmenu" href="#"><i class="fas fa-bars"></i></a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
-            <a href="{{url($dashboard)}}" class="nav-link">Home</a>
-        </li>
-        <li class="nav-item d-none d-sm-inline-block">
-            <a href="/" target="_blank" class="nav-link">Site</a>
+            <a href="{{url('/')}}" class="nav-link">Home</a>
         </li>
     </ul>
 
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">            
         <li class="nav-item">
-           <a class="nav-link" href="{{url($dashboard.'/users/'.Auth::user()->id.'/edit')}}">{{Auth::user()->name}} {{Auth::user()->last_name}}</a>
+           <a class="nav-link" href="{{url('/users/'.Auth::user()->id.'/edit')}}">{{Auth::user()->name}} {{Auth::user()->last_name}}</a>
         </li>  
 
       <!-- Notifications Dropdown Menu -->
@@ -79,29 +76,94 @@
         <nav class="mt-2">
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                 
+                <li class="nav-item">
+                    <a href="{{url('/')}}" class="nav-link">
+                        <i class="nav-icon fas fa-th"></i>
+                        <p>
+                           Home
+                        </p>
+                    </a>
+                </li>
+
                 <li class="nav-item nav-item has-treeview">
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-th"></i>
-                        <p>Content<i class="right fas fa-angle-left"></i></p>
+                        <p>CRM<i class="right fas fa-angle-left"></i></p>
                     </a>
                     <ul class="nav nav-treeview">
+
                         <li class="nav-item">
-                            <a href="{{url($dashboard.'/')}}" class="nav-link">
-                                <i class="nav-icon fas fa-th"></i>
+                            <a href="/lead" class="nav-link">
+                                <i class="nav-icon fas fa-user-friends"></i>
                                 <p>
-                                   Home
+                                   Lead
                                 </p>
                             </a>
                         </li>
 
                         <li class="nav-item">
-                            <a href="{{$dashboard}}/pages" class="nav-link">
+                            <a href="/deal" class="nav-link">
                                 <i class="nav-icon fas fa-user-friends"></i>
                                 <p>
-                                    Pages
+                                   Deal
                                 </p>
                             </a>
                         </li>
+
+                        <li class="nav-item">
+                            <a href="/company" class="nav-link">
+                                <i class="nav-icon fas fa-user-friends"></i>
+                                <p>
+                                   Company
+                                </p>
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="/contact" class="nav-link">
+                                <i class="nav-icon fas fa-user-friends"></i>
+                                <p>
+                                    Contact
+                                </p>
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="/group" class="nav-link">
+                                <i class="nav-icon fas fa-user-friends"></i>
+                                <p>
+                                   Group
+                                </p>
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="/streaam" class="nav-link">
+                                <i class="nav-icon fas fa-user-friends"></i>
+                                <p>
+                                    Streaam
+                                </p>
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="/disk" class="nav-link">
+                                <i class="nav-icon fas fa-user-friends"></i>
+                                <p>
+                                    Disk
+                                </p>
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="/department" class="nav-link">
+                                <i class="nav-icon fas fa-user-friends"></i>
+                                <p>
+                                    Department
+                                </p>
+                            </a>
+                        </li>
+
                     </ul>
                 </li>
 
@@ -113,7 +175,7 @@
                     <ul class="nav nav-treeview">
 
                         <li class="nav-item">
-                            <a href="{{$dashboard}}/users" class="nav-link">
+                            <a href="/users" class="nav-link">
                                 <i class="nav-icon fas fa-user-friends"></i>
                                 <p>
                                     Users
@@ -121,7 +183,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{$dashboard}}/roles" class="nav-link">
+                            <a href="/roles" class="nav-link">
                                 <i class="nav-icon fas fa-th"></i>
                                 <p>
                                     Roles
@@ -129,7 +191,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{$dashboard}}/permission" class="nav-link">
+                            <a href="/permission" class="nav-link">
                                 <i class="nav-icon fas fa-th"></i>
                                 <p>
                                     Permissions
