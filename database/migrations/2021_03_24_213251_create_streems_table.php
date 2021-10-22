@@ -15,6 +15,8 @@ class CreateStreemsTable extends Migration
     {
         Schema::create('streems', function (Blueprint $table) {
             $table->id();
+            $table->string('title');
+            $table->string('text');
             $table->timestamps();
         });
     }

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Lead;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class LeadController extends Controller
 {
@@ -14,7 +15,8 @@ class LeadController extends Controller
      */
     public function index()
     {
-        //
+        $result = Lead::all();
+        return view('lead.list', ['result'=>$result]);
     }
 
     /**
@@ -25,6 +27,7 @@ class LeadController extends Controller
     public function create()
     {
         //
+        return view('lead.add');
     }
 
     /**
@@ -35,7 +38,14 @@ class LeadController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $formData =$request->validate([
+            'title' => 'required|max:255'
+        ]);
+
+        $model = new Lead();
+        $model->created_by = Auth::id();
+        $model->fill($formData);
+        $model->save();
     }
 
     /**
@@ -46,7 +56,7 @@ class LeadController extends Controller
      */
     public function show(Lead $lead)
     {
-        //
+ 
     }
 
     /**
@@ -57,7 +67,7 @@ class LeadController extends Controller
      */
     public function edit(Lead $lead)
     {
-        //
+        return view('lead.add',['result'=>$lead]);
     }
 
     /**
@@ -69,7 +79,13 @@ class LeadController extends Controller
      */
     public function update(Request $request, Lead $lead)
     {
-        //
+        $formData =$request->validate([
+            'title' => 'required|max:255'
+        ]);
+        $model = $lead;
+        $model->created_by = Auth::id();
+        $model->fill($formData);
+        $model->save();
     }
 
     /**
@@ -80,6 +96,8 @@ class LeadController extends Controller
      */
     public function destroy(Lead $lead)
     {
-        //
+        $data = $lead;
+        $data->delete();
+        return redirect()->route('lead.index');
     }
 }

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Contact;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ContactController extends Controller
 {
@@ -14,7 +15,8 @@ class ContactController extends Controller
      */
     public function index()
     {
-        //
+        $result = Contact::all();
+        return view('deal.list', ['result'=>$result]);
     }
 
     /**
@@ -24,7 +26,7 @@ class ContactController extends Controller
      */
     public function create()
     {
-        //
+        return view('contact.add');
     }
 
     /**
@@ -35,7 +37,14 @@ class ContactController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $formData =$request->validate([
+            'title' => 'required|max:255'
+        ]);
+
+        $model = new Contact();
+        $model->created_by = Auth::id();
+        $model->fill($formData);
+        $model->save();
     }
 
     /**
@@ -57,7 +66,7 @@ class ContactController extends Controller
      */
     public function edit(Contact $contact)
     {
-        //
+        return view('contact.add', ['result'=>$contact]);
     }
 
     /**
@@ -69,7 +78,14 @@ class ContactController extends Controller
      */
     public function update(Request $request, Contact $contact)
     {
-        //
+        $formData =$request->validate([
+            'title' => 'required|max:255'
+        ]);
+
+        $model = $contact;
+        $model->created_by = Auth::id();
+        $model->fill($formData);
+        $model->save();
     }
 
     /**
@@ -80,6 +96,8 @@ class ContactController extends Controller
      */
     public function destroy(Contact $contact)
     {
-        //
+        $data = $contact;
+        $data->delete();
+        return redirect()->route('contact.index');
     }
 }

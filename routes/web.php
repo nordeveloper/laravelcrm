@@ -11,13 +11,11 @@ use App\Http\Controllers\StreamController;
 use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\DepartmentController;
+use App\Http\Controllers\HomeController;
 
-// use App\Http\Controllers\dashboard\RolesController;
-// use App\Http\Controllers\dashboard\UsersController;
 // use App\Http\Controllers\Dashboard\AuthController;
 // use App\Http\Controllers\Dashboard\IndexController;
 // use App\Http\Controllers\Dashboard\PagesController;
-
 // use App\Http\Controllers\Dashboard\RolesController;
 // use App\Http\Controllers\Dashboard\UsersController;
 // use App\Http\Controllers\Dashboard\PermissionController;
@@ -36,7 +34,7 @@ use App\Http\Controllers\DepartmentController;
 
 // Route::get('/', [Controller::class, 'index']);
 
-Route::get('/', [IndexController::class, 'index']);
+Route::get('/', [HomeController::class, 'index']);
 
 // Route::get('/auth', [AuthController::class, 'index'])->name('dashboard.login');
 // Route::post('/auth/login', [AuthController::class, 'login'])->name('dashboard.login');
@@ -45,8 +43,8 @@ Route::get('/', [IndexController::class, 'index']);
 
 Route::resource('/lead', LeadController::class);
 Route::resource('/deal', DealController::class);
-Route::resource('/company', CompanyController::class);
 Route::resource('/contact', ContactController::class);
+Route::resource('/company', CompanyController::class);
 Route::resource('/disk', DiskController::class);
 Route::resource('/group', GroupController::class);
 Route::resource('/task', TaskController::class);

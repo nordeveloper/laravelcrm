@@ -27,6 +27,9 @@
         <script src="{{ asset('js/app.js') }}" defer></script>
     </head>
     <body>
+        <header class="container-fluid">
+            @include('layouts.header')
+        </header>
         <div class="content">
             @yield('content')
         </div>

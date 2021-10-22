@@ -15,6 +15,9 @@ class CreateDisksTable extends Migration
     {
         Schema::create('disks', function (Blueprint $table) {
             $table->id();
+            $table->string('directory_name');
+            $table->integer('created_by');
+            $table->integer('modified_by');
             $table->timestamps();
         });
     }

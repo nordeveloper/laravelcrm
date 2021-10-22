@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Task;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class TaskController extends Controller
 {
@@ -14,7 +15,8 @@ class TaskController extends Controller
      */
     public function index()
     {
-        //
+        $result = Task::all();
+        return view('task.list', ['result'=>$result]);
     }
 
     /**
@@ -24,7 +26,7 @@ class TaskController extends Controller
      */
     public function create()
     {
-        //
+        return view('task.add');
     }
 
     /**
@@ -35,7 +37,14 @@ class TaskController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $formData =$request->validate([
+            'title' => 'required|max:255'
+        ]);
+
+        $model = new Task();
+        $model->created_by = Auth::id();
+        $model->fill($formData);
+        $model->save();
     }
 
     /**
@@ -57,7 +66,7 @@ class TaskController extends Controller
      */
     public function edit(Task $task)
     {
-        //
+        return view('task.add',['result'=>$task]);
     }
 
     /**
@@ -69,7 +78,14 @@ class TaskController extends Controller
      */
     public function update(Request $request, Task $task)
     {
-        //
+        $formData =$request->validate([
+            'title' => 'required|max:255'
+        ]);
+
+        $model = $task;
+        $model->created_by = Auth::id();
+        $model->fill($formData);
+        $model->save();
     }
 
     /**
@@ -80,6 +96,7 @@ class TaskController extends Controller
      */
     public function destroy(Task $task)
     {
-        //
+        $task->delete();
+        return redirect()->route('company.index');
     }
 }

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Company;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class CompanyController extends Controller
 {
@@ -14,7 +15,8 @@ class CompanyController extends Controller
      */
     public function index()
     {
-        //
+        $result = Company::all();
+        return view('company.list', ['result'=>$result]);
     }
 
     /**
@@ -24,7 +26,7 @@ class CompanyController extends Controller
      */
     public function create()
     {
-        //
+        return view('company.add');
     }
 
     /**
@@ -35,7 +37,14 @@ class CompanyController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $formData =$request->validate([
+            'title' => 'required|max:255'
+        ]);
+
+        $model = new Deal();
+        $model->created_by = Auth::id();
+        $model->fill($formData);
+        $model->save();
     }
 
     /**
@@ -57,7 +66,7 @@ class CompanyController extends Controller
      */
     public function edit(Company $company)
     {
-        //
+        return view('company.add',['result'=>$company]);
     }
 
     /**
@@ -69,7 +78,14 @@ class CompanyController extends Controller
      */
     public function update(Request $request, Company $company)
     {
-        //
+        $formData =$request->validate([
+            'title' => 'required|max:255'
+        ]);
+
+        $model = $company;
+        $model->created_by = Auth::id();
+        $model->fill($formData);
+        $model->save();
     }
 
     /**
@@ -80,6 +96,8 @@ class CompanyController extends Controller
      */
     public function destroy(Company $company)
     {
-        //
+        $data = $company;
+        $data->delete();
+        return redirect()->route('company.index');
     }
 }
