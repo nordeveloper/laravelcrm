@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Deal;
+use App\Models\User;
+use App\Models\Source;
+use App\Models\DealStage;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -26,7 +29,10 @@ class DealController extends Controller
      */
     public function create()
     {
-        return view('deal.add');
+        $users = User::all();
+        $stages = DealStage::all();
+        $sources = Source::all();
+        return view('deal.add', ['stages'=>$stages, 'users'=>$users, 'sources'=>$sources]);
     }
 
     /**
@@ -37,14 +43,18 @@ class DealController extends Controller
      */
     public function store(Request $request)
     {
-        $formData =$request->validate([
+        $request->validate([
             'title' => 'required|max:255'
         ]);
+
+        $formData = $request->input();
 
         $model = new Deal();
         $model->created_by = Auth::id();
         $model->fill($formData);
         $model->save();
+
+        return redirect()->route('deal.index');
     }
 
     /**
@@ -78,14 +88,18 @@ class DealController extends Controller
      */
     public function update(Request $request, Deal $deal)
     {
-        $formData =$request->validate([
+        $request->validate([
             'title' => 'required|max:255'
         ]);
+
+        $formData = $request->input();
 
         $model = $deal;
         $model->created_by = Auth::id();
         $model->fill($formData);
         $model->save();
+
+        return redirect()->route('deal.index');
     }
 
     /**

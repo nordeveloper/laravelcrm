@@ -5,8 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Contact extends Model
+class DealStage extends Model
 {
     use HasFactory;
-    protected $fillable = ['name', 'last_name','comments', 'responsible_id', 'source_id', 'created_by', 'modified_by'];
+    protected $table="deal_stages";
 }

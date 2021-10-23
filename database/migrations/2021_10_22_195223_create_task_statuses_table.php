@@ -17,7 +17,7 @@ class CreateTaskStatusesTable extends Migration
             $table->id();
             $table->string('title');
             $table->string('color');
-            $table->timestamps();
+            //$table->timestamps();
         });
     }
 

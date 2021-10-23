@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
+use App\Models\Source;
 use App\Models\Company;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -26,7 +28,9 @@ class CompanyController extends Controller
      */
     public function create()
     {
-        return view('company.add');
+        $users = User::all();
+        $sources = Source::all();
+        return view('company.add', ['users'=>$users, 'sources'=>$sources]);
     }
 
     /**

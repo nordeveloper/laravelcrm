@@ -19,16 +19,13 @@
                     ID
                 </th>
                 <th>
-                    Active
+                    Title
                 </th>
                 <th>
                    Date created
                 </th>
                 <th>
                    Created by
-                </th>
-                <th>
-                    Title
                 </th>
                 <th>
                     Actions
@@ -38,10 +35,9 @@
             @foreach ($result as $item)
             <tr>
                 <td>{{$item->id}}</td>
-                <td>@if($item->active==1) Yes @else no @endif</td>
+                <td>{{$item->title}}</td>
                 <td>{{$item->created_at}}</td>
                 <td>{{$item->created_by}}</td>
-                <td>{{$item->title}}</td>
                 <td>
                     <a href="{{ route('deal.edit', $item->id)}}" class="btn btn-info btn-sm btn-edit"><i class="fa fa-edit"></i></a>
                     <form class="action-delete" action="{{ route('deal.destroy', $item->id)}}" method="post">

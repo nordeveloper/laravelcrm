@@ -1,7 +1,7 @@
 @extends('layouts.main') 
  @section('content')
 
- @php dump($errors) @endphp
+ {{-- @php dump($errors) @endphp --}}
 <div class="card">
         <div class="card-header">
             <p class="h4">{{__('Add deal')}}</p>
@@ -19,6 +19,9 @@
             <label>Stage</label>
             <select name="stage_id" class="form-control">
                 <option value=""></option>
+                @foreach ($stages as $stage)
+                <option value="{{$stage->id}}">{{$stage->title}}</option>  
+                @endforeach
             </select>
         </div>
 
@@ -31,6 +34,9 @@
             <label>Responsible</label>
             <select name="responsible_id" class="form-control">
                 <option value=""></option>
+                @foreach ($users as $user)
+                <option value="{{$user->id}}">{{$user->name}}</option>  
+                @endforeach
             </select>
         </div>
 
@@ -38,6 +44,9 @@
             <label>Source</label>
             <select name="source_id" class="form-control">
                 <option value=""></option>
+                @foreach ($sources as $source)
+                <option value="{{$source->id}}">{{$source->title}}</option>  
+                @endforeach
             </select>
         </div>
 

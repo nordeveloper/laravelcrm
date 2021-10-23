@@ -8,20 +8,35 @@
     
         <form class="card-body" action="{{route('contact.store')}}" method="post" enctype="multipart/form-data">
         {{ csrf_field() }}
+ 
         <div class="form-group">
-            <label>
-            <input type="checkbox" name="active" value="1"> Active
-            </label>
+            <label>Name</label>
+            <input type="text" class="form-control" name="name" value="{{old('name')}}">
         </div>
-    
+
         <div class="form-group">
-            <label>Sort</label>
-            <input type="text" class="form-control" name="sort" value="500">
+            <label>Last name</label>
+            <input type="text" class="form-control" name="last_name" value="{{old('last_name')}}">
         </div>
-    
+
         <div class="form-group">
-            <label>Title</label>
-            <input type="text" class="form-control" name="title" value="{{old('title')}}">
+            <label>Responsible</label>
+            <select name="responsible_id" class="form-control">
+                <option value=""></option>
+                @foreach ($users as $user)
+                <option value="{{$user->id}}">{{$user->name}}</option>  
+                @endforeach
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label>Source</label>
+            <select name="source_id" class="form-control">
+                <option value=""></option>
+                @foreach ($sources as $source)
+                <option value="{{$source->id}}">{{$source->title}}</option>  
+                @endforeach
+            </select>
         </div>
     
         <div class="form-group">

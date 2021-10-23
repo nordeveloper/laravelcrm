@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Lead;
+use App\Models\User;
+use App\Models\Source;
+use App\Models\DealStage;
+use App\Models\Leadstatus;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -26,8 +30,10 @@ class LeadController extends Controller
      */
     public function create()
     {
-        //
-        return view('lead.add');
+        $users = User::all();
+        $statuslist = Leadstatus::all();
+        $sources = Source::all();
+        return view('lead.add', ['statuslist'=>$statuslist,'users'=>$users, 'sources'=>$sources]);
     }
 
     /**
@@ -38,14 +44,18 @@ class LeadController extends Controller
      */
     public function store(Request $request)
     {
-        $formData =$request->validate([
+        $request->validate([
             'title' => 'required|max:255'
         ]);
+
+        $formData = $request->input();
 
         $model = new Lead();
         $model->created_by = Auth::id();
         $model->fill($formData);
         $model->save();
+
+        return redirect()->route('lead.index');
     }
 
     /**
@@ -67,7 +77,10 @@ class LeadController extends Controller
      */
     public function edit(Lead $lead)
     {
-        return view('lead.add',['result'=>$lead]);
+        $users = User::all();
+        $statuslist = Leadstatus::all();
+        $sources = Source::all();
+        return view('lead.add', ['result'=>$lead, 'statuslist'=>$statuslist,'users'=>$users, 'sources'=>$sources]);
     }
 
     /**
@@ -79,13 +92,17 @@ class LeadController extends Controller
      */
     public function update(Request $request, Lead $lead)
     {
-        $formData =$request->validate([
+        $request->validate([
             'title' => 'required|max:255'
         ]);
+        $formData = $request->input();
+
         $model = $lead;
         $model->created_by = Auth::id();
         $model->fill($formData);
         $model->save();
+
+        return redirect()->route('lead.index');
     }
 
     /**

@@ -1,45 +1,29 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="csrf-token" content="{{ csrf_token() }}">
-        <title>{{ config('app.name', 'Laravel') }}</title>
+@include('layouts.header')
 
-        @yield('meta')
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="csrf-token" content="{{ csrf_token() }}">
-        <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
-        <link href="{{ asset('css/fontawesome/css/all.min.css') }}" rel="stylesheet">
-        <link href="{{ asset('css/style.css') }}" rel="stylesheet">
-        <link href="{{ asset('js/toastr/toastr.min.css') }}" rel="stylesheet">
-        <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+@include('layouts.navbar')
 
-        <script src="{{ asset('js/jquery-3.4.1.min.js') }}"></script>
-        <script src="{{ asset('js/popper.min.js') }}"></script>
-        <script src="{{ asset('js/bootstrap.min.js') }}"></script>
-        <script src="{{ asset('js/jquery.flexslider-min.js') }}"></script>
-        <script src="{{ asset('js/toastr/toastr.min.js') }}"></script>
-        <script src="{{ asset('js/main.js') }}"></script>        
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <div class="content-header">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                    @yield('breadcrumb')                               
+                </div><!-- /.col -->
+            </div><!-- /.row -->
+        </div><!-- /.container-fluid -->
+    </div>
+    <!-- /.content-header -->
 
-        <!-- Scripts -->
-        <script src="{{ asset('js/app.js') }}" defer></script>
-    </head>
-    <body>
-        <header class="container-fluid">
-            @include('layouts.header')
-        </header>
-        <div class="content">
+    <!-- Main content -->
+    <section class="content">
+        <div class="container-fluid">
             @yield('content')
-        </div>
+        </div><!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
+</div>
+<!-- /.content-wrapper -->
 
-        <footer class="footer">
-
-        </footer>
-
-        @if(session('status'))
-        {{session('status')}}
-        @endif
-    </body>
-</html>
+@include('layouts.footer')

@@ -8,5 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class Deal extends Model
 {
     use HasFactory;
-    protected $fillable = ['title'];
+    protected $fillable = ['title', 'amount', 'comments', 'contact_id', 'stage_id', 'responsible_id', 'source_id', 'created_by', 'modified_by'];
 }

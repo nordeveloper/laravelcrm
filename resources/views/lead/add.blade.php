@@ -18,6 +18,9 @@
             <label>Status</label>
             <select name="status_id" class="form-control">
                 <option value=""></option>
+                @foreach ($statuslist as $status)
+                <option value="{{$status->id}}">{{$status->title}}</option>  
+                @endforeach
             </select>
         </div>
 
@@ -30,6 +33,9 @@
             <label>Responsible</label>
             <select name="responsible_id" class="form-control">
                 <option value=""></option>
+                @foreach ($users as $user)
+                <option value="{{$user->id}}">{{$user->name}}</option>  
+                @endforeach
             </select>
         </div>
 
@@ -37,6 +43,9 @@
             <label>Source</label>
             <select name="source_id" class="form-control">
                 <option value=""></option>
+                @foreach ($sources as $source)
+                <option value="{{$source->id}}">{{$source->title}}</option>  
+                @endforeach
             </select>
         </div>
 

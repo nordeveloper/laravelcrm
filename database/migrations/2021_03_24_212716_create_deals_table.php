@@ -24,7 +24,7 @@ class CreateDealsTable extends Migration
             $table->integer('observer_id')->nullable();
             $table->integer('responsible_id')->nullable();
             $table->integer('created_by');
-            $table->integer('modified_by');
+            $table->integer('modified_by')->nullable();
             $table->timestamps();
         });
     }
