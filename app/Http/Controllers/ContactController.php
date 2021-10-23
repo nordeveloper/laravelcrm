@@ -41,7 +41,7 @@ class ContactController extends Controller
      */
     public function store(Request $request)
     {
-        $formData =$request->validate([
+        $request->validate([
             'title' => 'required|max:255'
         ]);
 
@@ -100,10 +100,10 @@ class ContactController extends Controller
      * @param  \App\Models\Contact  $contact
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Contact $contact)
+    public function destroy($id)
     {
-        $data = $contact;
-        $data->delete();
+        $model = Contact::find($id);
+        $model->delete();
         return redirect()->route('contact.index');
     }
 }

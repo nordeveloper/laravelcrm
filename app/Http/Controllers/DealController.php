@@ -76,7 +76,7 @@ class DealController extends Controller
      */
     public function edit(Deal $deal)
     {
-        return view('deal.add',['result'=>$deal]);
+        return view('deal.edit',['result'=>$deal]);
     }
 
     /**
@@ -110,6 +110,7 @@ class DealController extends Controller
      */
     public function destroy(Deal $deal)
     {
-        //
+        $deal->delete();
+        return redirect()->route('deal.index');
     }
 }

@@ -3,13 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
-use App\Models\Source;
-use App\Models\Company;
 use App\Models\Project;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class CompanyController extends Controller
+class ProjectController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,8 +16,8 @@ class CompanyController extends Controller
      */
     public function index()
     {
-        $result = Company::all();
-        return view('company.list', ['result'=>$result]);
+        $result = Project::all();
+        return view('project.list', ['result'=>$result]);
     }
 
     /**
@@ -30,8 +28,7 @@ class CompanyController extends Controller
     public function create()
     {
         $users = User::all();
-        $sources = Source::all();
-        return view('company.add', ['users'=>$users, 'sources'=>$sources]);
+        return view('project.add', ['users'=>$users]);
     }
 
     /**
@@ -46,7 +43,9 @@ class CompanyController extends Controller
             'title' => 'required|max:255'
         ]);
 
-        $model = new Company();
+        $formData = $request->input();
+
+        $model = new Project();
         $model->created_by = Auth::id();
         $model->fill($formData);
         $model->save();
@@ -55,10 +54,10 @@ class CompanyController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Company  $company
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Company $company)
+    public function show($id)
     {
         //
     }
@@ -66,28 +65,32 @@ class CompanyController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Company  $company
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Company $company)
+    public function edit($id)
     {
-        return view('company.add',['result'=>$company]);
+        $users = User::all();
+        $result = Project::find($id);
+        return view('project.add', ['result'=>$result, 'users'=>$users]);
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Company  $company
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Company $company)
+    public function update(Request $request, $id)
     {
-        $formData =$request->validate([
+        $request->validate([
             'title' => 'required|max:255'
         ]);
 
-        $model = $company;
+        $formData = $request->input();
+
+        $model = Project::find($id);
         $model->created_by = Auth::id();
         $model->fill($formData);
         $model->save();
@@ -96,13 +99,13 @@ class CompanyController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Company  $company
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-        $model = Company::find($id);
+        $model = Project::find($id);
         $model->delete();
-        return redirect()->route('company.index');
+        return redirect()->route('project.index');
     }
 }

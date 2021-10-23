@@ -31,6 +31,13 @@
         </div>
 
         <div class="form-group">
+            <label>Contact</label>
+            <select name="contact_id" class="form-control">
+                <option value=""></option>
+            </select>
+        </div>
+
+        <div class="form-group">
             <label>Responsible</label>
             <select name="responsible_id" class="form-control">
                 <option value=""></option>

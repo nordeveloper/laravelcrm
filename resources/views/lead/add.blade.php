@@ -53,8 +53,6 @@
             <label>Comments</label>
             <textarea class="form-control" name="comments" cols="30" rows="3">{{old('comments')}}</textarea>
         </div>
-       
-        
     
         <div class="form-group">
             <input type="submit" class="btn btn-success" name="submit" value="Save">

@@ -129,10 +129,10 @@
                         </li>
 
                         <li class="nav-item">
-                            <a href="/group" class="nav-link">
+                            <a href="/task" class="nav-link">
                                 <i class="nav-icon fas fa-user-friends"></i>
                                 <p>
-                                   Group
+                                    Task
                                 </p>
                             </a>
                         </li>
@@ -142,6 +142,24 @@
                                 <i class="nav-icon fas fa-user-friends"></i>
                                 <p>
                                     Streaam
+                                </p>
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="/project" class="nav-link">
+                                <i class="nav-icon fas fa-user-friends"></i>
+                                <p>
+                                    Projects
+                                </p>
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="/group" class="nav-link">
+                                <i class="nav-icon fas fa-user-friends"></i>
+                                <p>
+                                   Group
                                 </p>
                             </a>
                         </li>
