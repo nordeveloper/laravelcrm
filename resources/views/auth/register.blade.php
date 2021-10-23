@@ -1,8 +1,8 @@
-@extends('layouts.main')
+@extends('auth.layout')
 @section('content')        
         
 <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-md-7">
             <div class="card register-box">
                 <div class="card-header">{{ __('Register') }}</div>
 

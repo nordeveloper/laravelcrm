@@ -1,5 +1,9 @@
-@extends('layouts.main')
+@extends('auth.layout')
 @section('content')   
+
+<div class="card auth-box">
+    <div class="card-body">
+
 <form method="POST" action="{{ route('password.update') }}">
     @csrf
 
@@ -32,4 +36,7 @@
         </button>
     </div>
 </form>
+
+</div>
+</div>
 @endsection                `
