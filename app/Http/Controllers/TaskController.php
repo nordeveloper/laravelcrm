@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Task;
 use App\Models\User;
+use App\Models\Project;
+use App\Models\TaskStatus;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -28,7 +30,11 @@ class TaskController extends Controller
     public function create()
     {
         $users = User::all();
-        return view('task.add', ['users'=>$users]);
+        $statuses = TaskStatus::all();
+
+        $projects = Project::all();
+
+        return view('task.add', ['users'=>$users, 'statuses'=>$statuses, 'projects'=>$projects]);
     }
 
     /**
@@ -73,7 +79,8 @@ class TaskController extends Controller
     public function edit(Task $task)
     {
         $users = User::all();
-        return view('task.add',['result'=>$task, 'users'=>$users]);
+        $statuses = TaskStatus::all();
+        return view('task.add',['result'=>$task, 'users'=>$users,'statuses'=>$statuses]);
     }
 
     /**
