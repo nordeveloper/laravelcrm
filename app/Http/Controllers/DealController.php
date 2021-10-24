@@ -54,7 +54,7 @@ class DealController extends Controller
         $model->fill($formData);
         $model->save();
 
-        return redirect()->route('deal.index');
+        return redirect()->route('deal.index')->with('success', 'Record successfully added');
     }
 
     /**
@@ -99,7 +99,7 @@ class DealController extends Controller
         $model->fill($formData);
         $model->save();
 
-        return redirect()->route('deal.index');
+        return redirect()->route('deal.index')->with('success', 'Record successfully updated');
     }
 
     /**
@@ -111,6 +111,6 @@ class DealController extends Controller
     public function destroy(Deal $deal)
     {
         $deal->delete();
-        return redirect()->route('deal.index');
+        return redirect()->route('deal.index')->with('success', 'Record successfully deleted');
     }
 }

@@ -40,7 +40,7 @@
                 <td>{{$item->id}}</td>
                 <td>@if($item->active==1) Yes @else no @endif</td>
                 <td>{{$item->created_at}}</td>
-                <td>{{$item->created_by}}</td>
+                <td>{{$item->createdBy->name?? ''}}</td>
                 <td>{{$item->title}}</td>
                 <td>
                     <a href="{{ route('task.edit', $item->id)}}" class="btn btn-info btn-sm btn-edit"><i class="fa fa-edit"></i></a>

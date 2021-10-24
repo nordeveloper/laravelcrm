@@ -13,14 +13,9 @@ use App\Http\Controllers\DiskController;
 use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\GroupController;
 use App\Http\Controllers\StreamController;
-
-// use App\Http\Controllers\Dashboard\AuthController;
-// use App\Http\Controllers\Dashboard\IndexController;
-// use App\Http\Controllers\Dashboard\PagesController;
-// use App\Http\Controllers\Dashboard\RolesController;
-// use App\Http\Controllers\Dashboard\UsersController;
-// use App\Http\Controllers\Dashboard\PermissionController;
-// use App\Http\Controllers\Dashboard\FilemanagerController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\RolesController;
+// use App\Http\Controllers\UsersController;
 
 /*
 |--------------------------------------------------------------------------
@@ -46,7 +41,7 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('/group', GroupController::class);
     Route::resource('/department', DepartmentController::class);
     
-    Route::resource('/users', UsersController::class);
+    Route::resource('/user', UserController::class);
     Route::resource('/roles', RolesController::class);
     Route::resource('/permission', PermissionController::class);
 });

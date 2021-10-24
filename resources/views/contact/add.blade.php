@@ -1,5 +1,10 @@
 @extends('layouts.main') 
- @section('content')
+@section('content')
+
+{{-- @php
+dump($errors);    
+@endphp --}}
+
 <div class="card">
         <div class="card-header">
             <p class="h4">{{__('Add contact')}}</p>

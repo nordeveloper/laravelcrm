@@ -25,8 +25,8 @@
         </div>
 
         <div class="form-group">
-            <label>Comments</label>
-            <textarea class="form-control" name="comments" cols="30" rows="3">{{old('comments')}}</textarea>
+            <label>Description</label>
+            <textarea class="form-control" name="description" cols="30" rows="3">{{old('description')}}</textarea>
         </div> 
     
         <div class="form-group">

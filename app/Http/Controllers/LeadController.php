@@ -55,7 +55,7 @@ class LeadController extends Controller
         $model->fill($formData);
         $model->save();
 
-        return redirect()->route('lead.index');
+        return redirect()->route('lead.index')->with('success', 'Record successfully added');
     }
 
     /**
@@ -102,7 +102,7 @@ class LeadController extends Controller
         $model->fill($formData);
         $model->save();
 
-        return redirect()->route('lead.index');
+        return redirect()->route('lead.index')->with('success', 'Record successfully updated');
     }
 
     /**
@@ -115,6 +115,6 @@ class LeadController extends Controller
     {
         $data = $lead;
         $data->delete();
-        return redirect()->route('lead.index');
+        return redirect()->route('lead.index')->with('success', 'Record successfully deleted');
     }
 }

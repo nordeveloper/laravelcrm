@@ -49,6 +49,8 @@ class ProjectController extends Controller
         $model->created_by = Auth::id();
         $model->fill($formData);
         $model->save();
+
+        return redirect()->route('project.index')->with('success', 'Record successfully added');
     }
 
     /**
@@ -94,6 +96,8 @@ class ProjectController extends Controller
         $model->created_by = Auth::id();
         $model->fill($formData);
         $model->save();
+
+        return redirect()->route('project.index')->with('success', 'Record successfully updated');
     }
 
     /**

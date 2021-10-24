@@ -8,25 +8,30 @@
     
         <form class="card-body" action="{{route('project.store')}}" method="post" enctype="multipart/form-data">
         {{ csrf_field() }}
-        <div class="form-group">
-            <label>
-            <input type="checkbox" name="active" value="1"> Active
-            </label>
-        </div>
-    
-        <div class="form-group">
-            <label>Sort</label>
-            <input type="text" class="form-control" name="sort" value="500">
-        </div>
-    
+
         <div class="form-group">
             <label>Title</label>
             <input type="text" class="form-control" name="title" value="{{old('title')}}">
         </div>
+
+        <div class="form-group">
+            <label>Responsible</label>
+            <select name="responsible_id" class="form-control">
+                <option value=""></option>
+                @foreach ($users as $user)
+                <option value="{{$user->id}}">{{$user->name}}</option>  
+                @endforeach
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label>Description</label>
+            <textarea class="form-control" name="description" cols="30" rows="3">{{old('description')}}</textarea>
+        </div> 
     
         <div class="form-group">
             <input type="submit" class="btn btn-success" name="submit" value="Save">
-        </div>
+        </div>        
     
         </form>
     </div>

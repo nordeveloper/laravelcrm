@@ -10,4 +10,9 @@ class Lead extends Model
     use HasFactory;
 
     protected $fillable = ['title', 'amount', 'comments', 'status_id', 'responsible_id', 'source_id', 'created_by', 'modified_by'];
+
+    public function createdBy()
+    {
+        return $this->hasOne(User::class, 'id', 'created_by');
+    }
 }

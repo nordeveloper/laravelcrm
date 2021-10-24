@@ -10,7 +10,7 @@
         @method('PATCH')
         <div class="form-group">
             <label>Title</label>
-            <input type="text" class="form-control" name="title" value="{{old('title')}}">
+            <input type="text" class="form-control" name="title" value="{{$result->title}}">
         </div>
 
         <div class="form-group">
@@ -39,7 +39,7 @@
 
         <div class="form-group">
             <label>Comments</label>
-            <textarea class="form-control" name="comments" cols="30" rows="3">{{old('comments')}}</textarea>
+            <textarea class="form-control" name="comments" cols="30" rows="3">{{$result->comments}}</textarea>
         </div>        
     
         <div class="form-group">

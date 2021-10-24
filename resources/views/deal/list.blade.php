@@ -37,7 +37,7 @@
                 <td>{{$item->id}}</td>
                 <td>{{$item->title}}</td>
                 <td>{{$item->created_at}}</td>
-                <td>{{$item->created_by}}</td>
+                <td>{{$item->createdBy->name}}</td>
                 <td>
                     <a href="{{ route('deal.edit', $item->id)}}" class="btn btn-info btn-sm btn-edit"><i class="fa fa-edit"></i></a>
                     <form class="action-delete" action="{{ route('deal.destroy', $item->id)}}" method="post">

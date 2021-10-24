@@ -42,13 +42,16 @@ class ContactController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'title' => 'required|max:255'
+            'name' => 'required|max:255'
         ]);
+        $formData = $request->input();
 
         $model = new Contact();
         $model->created_by = Auth::id();
         $model->fill($formData);
         $model->save();
+
+        return redirect()->route('company.index')->with('success', 'Record successfully added');
     }
 
     /**
@@ -82,16 +85,19 @@ class ContactController extends Controller
      * @param  \App\Models\Contact  $contact
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Contact $contact)
+    public function update(Request $request, $id)
     {
-        $formData =$request->validate([
-            'title' => 'required|max:255'
+        $request->validate([
+            'name' => 'required|max:255'
         ]);
+        $formData = $request->input();
 
-        $model = $contact;
+        $model = Contact::find($id);
         $model->created_by = Auth::id();
         $model->fill($formData);
         $model->save();
+
+        return redirect()->route('company.index')->with('success', 'Record successfully updated');
     }
 
     /**
@@ -104,6 +110,6 @@ class ContactController extends Controller
     {
         $model = Contact::find($id);
         $model->delete();
-        return redirect()->route('contact.index');
+        return redirect()->route('contact.index')->with('success', 'Record successfully deleted');
     }
 }

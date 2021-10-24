@@ -4,7 +4,7 @@
             <div class="card-header">
                 <div class="row">
                     <div class="col-md-3">
-                        <h3 class="h3">{{__('contact')}}</h3>
+                        <h3 class="h3">{{__('Contact')}}</h3>
                     </div>
                     <div class="col-md-9 text-right">
                         <p><a class="btn btn-success" href="{{route('contact.create')}}">{{__('Add')}}</a></p>
@@ -19,16 +19,13 @@
                     ID
                 </th>
                 <th>
-                    Active
-                </th>
-                <th>
                    Date created
                 </th>
                 <th>
                    Created by
                 </th>
                 <th>
-                    Title
+                    Contact
                 </th>
                 <th>
                     Actions
@@ -38,10 +35,9 @@
             @foreach ($result as $item)
             <tr>
                 <td>{{$item->id}}</td>
-                <td>@if($item->active==1) Yes @else no @endif</td>
                 <td>{{$item->created_at}}</td>
-                <td>{{$item->created_by}}</td>
-                <td>{{$item->title}}</td>
+                <td>{{$item->createdBy->name}}</td>
+                <td>{{$item->name ?? ''}} {{$item->last_name ?? ''}}</td>
                 <td>
                     <a href="{{ route('contact.edit', $item->id)}}" class="btn btn-info btn-sm btn-edit"><i class="fa fa-edit"></i></a>
                     <form class="action-delete" action="{{ route('contact.destroy', $item->id)}}" method="post">

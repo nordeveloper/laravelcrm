@@ -14,7 +14,7 @@
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">            
         <li class="nav-item">
-           <a class="nav-link" href="{{url('/users/'.Auth::user()->id.'/edit')}}">{{Auth::user()->name}} {{Auth::user()->last_name}}</a>
+           <a class="nav-link" href="{{url('/user/'.Auth::user()->id.'/edit')}}">{{Auth::user()->name}} {{Auth::user()->last_name}}</a>
         </li>  
 
       <!-- Notifications Dropdown Menu -->
@@ -138,19 +138,19 @@
                         </li>
 
                         <li class="nav-item">
-                            <a href="/streaam" class="nav-link">
-                                <i class="nav-icon fas fa-user-friends"></i>
-                                <p>
-                                    Streaam
-                                </p>
-                            </a>
-                        </li>
-
-                        <li class="nav-item">
                             <a href="/project" class="nav-link">
                                 <i class="nav-icon fas fa-user-friends"></i>
                                 <p>
                                     Projects
+                                </p>
+                            </a>
+                        </li>                        
+
+                        <li class="nav-item">
+                            <a href="/streaam" class="nav-link">
+                                <i class="nav-icon fas fa-user-friends"></i>
+                                <p>
+                                    Streaam
                                 </p>
                             </a>
                         </li>
@@ -193,7 +193,7 @@
                     <ul class="nav nav-treeview">
 
                         <li class="nav-item">
-                            <a href="/users" class="nav-link">
+                            <a href="/user" class="nav-link">
                                 <i class="nav-icon fas fa-user-friends"></i>
                                 <p>
                                     Users

@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\Source;
 use App\Models\Company;
-use App\Models\Project;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -45,11 +44,14 @@ class CompanyController extends Controller
         $request->validate([
             'title' => 'required|max:255'
         ]);
+        $formData = $request->input();
 
         $model = new Company();
         $model->created_by = Auth::id();
         $model->fill($formData);
         $model->save();
+
+        return redirect()->route('company.index')->with('success', 'Record successfully added');
     }
 
     /**
@@ -71,7 +73,10 @@ class CompanyController extends Controller
      */
     public function edit(Company $company)
     {
-        return view('company.add',['result'=>$company]);
+        $users = User::all();
+        $sources = Source::all();
+
+        return view('company.edit',['result'=>$company, 'users'=>$users, 'sources'=>$sources]);
     }
 
     /**
@@ -81,16 +86,19 @@ class CompanyController extends Controller
      * @param  \App\Models\Company  $company
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Company $company)
+    public function update(Request $request,$id)
     {
-        $formData =$request->validate([
+        $request->validate([
             'title' => 'required|max:255'
         ]);
+        $formData = $request->input();
 
-        $model = $company;
+        $model = Company::find($id);
         $model->created_by = Auth::id();
         $model->fill($formData);
         $model->save();
+
+        return redirect()->route('company.index')->with('success', 'Record successfully updated');
     }
 
     /**
@@ -103,6 +111,6 @@ class CompanyController extends Controller
     {
         $model = Company::find($id);
         $model->delete();
-        return redirect()->route('company.index');
+        return redirect()->route('company.index')->with('success', 'Record successfully deleted');
     }
 }

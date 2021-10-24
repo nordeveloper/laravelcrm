@@ -39,14 +39,18 @@ class TaskController extends Controller
      */
     public function store(Request $request)
     {
-        $formData =$request->validate([
+        $request->validate([
             'title' => 'required|max:255'
         ]);
+
+        $formData = $request->input();
 
         $model = new Task();
         $model->created_by = Auth::id();
         $model->fill($formData);
         $model->save();
+
+        return redirect()->route('task.index')->with('success', 'Record successfully added');
     }
 
     /**
@@ -68,7 +72,8 @@ class TaskController extends Controller
      */
     public function edit(Task $task)
     {
-        return view('task.add',['result'=>$task]);
+        $users = User::all();
+        return view('task.add',['result'=>$task, 'users'=>$users]);
     }
 
     /**
@@ -78,16 +83,20 @@ class TaskController extends Controller
      * @param  \App\Models\Task  $task
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Task $task)
+    public function update(Request $request, $id)
     {
-        $formData =$request->validate([
+        $request->validate([
             'title' => 'required|max:255'
         ]);
 
-        $model = $task;
+        $formData = $request->input();
+
+        $model = Task::find($id);
         $model->created_by = Auth::id();
         $model->fill($formData);
         $model->save();
+
+        return redirect()->route('task.index')->with('success', 'Record successfully updated');
     }
 
     /**
@@ -99,6 +108,6 @@ class TaskController extends Controller
     public function destroy(Task $task)
     {
         $task->delete();
-        return redirect()->route('company.index');
+        return redirect()->route('task.index')->with('success', 'Record successfully deleted');
     }
 }

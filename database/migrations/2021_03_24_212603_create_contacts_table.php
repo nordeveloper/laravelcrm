@@ -23,7 +23,7 @@ class CreateContactsTable extends Migration
             $table->integer('responsible_id')->nullable();
             $table->integer('source_id')->nullable();
             $table->integer('created_by');
-            $table->integer('modified_by');
+            $table->integer('modified_by')->nullable();
             $table->timestamps();
         });
     }
