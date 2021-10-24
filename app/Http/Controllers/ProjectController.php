@@ -93,7 +93,7 @@ class ProjectController extends Controller
         $formData = $request->input();
 
         $model = Project::find($id);
-        $model->created_by = Auth::id();
+        $model->modified_by = Auth::id();
         $model->fill($formData);
         $model->save();
 

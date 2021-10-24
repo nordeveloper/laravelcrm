@@ -17,7 +17,7 @@ class PermissionController extends Controller
     public function index()
     {   
         $result = RolePermission::all();
-        return view('dashboard.permission.list', ['result'=>$result]);
+        return view('permission.list', ['result'=>$result]);
     }
 
     /**
@@ -28,7 +28,7 @@ class PermissionController extends Controller
     public function create()
     {
         $roles = Role::all();
-        return view('dashboard.permission.add', ['roles'=>$roles]);
+        return view('permission.add', ['roles'=>$roles]);
     }
 
     /**
@@ -79,8 +79,7 @@ class PermissionController extends Controller
 
         $result = RolePermission::find($id);
 
-        //dd($RolePermission);
-        return view('dashboard.permission.edit', ['roles'=>$roles, 'result'=>$result]);
+        return view('permission.edit', ['roles'=>$roles, 'result'=>$result]);
     }
 
     /**

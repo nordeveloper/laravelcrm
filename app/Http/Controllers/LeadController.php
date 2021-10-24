@@ -98,7 +98,7 @@ class LeadController extends Controller
         $formData = $request->input();
 
         $model = $lead;
-        $model->created_by = Auth::id();
+        $model->modified_by = Auth::id();
         $model->fill($formData);
         $model->save();
 

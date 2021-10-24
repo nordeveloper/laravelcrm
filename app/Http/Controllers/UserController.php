@@ -42,6 +42,7 @@ class UserController extends Controller
     public function store(Request $request)
     {
         $request->validate([
+            'name' => 'required|max:255',
             'email' => 'required|max:255',
             'passord'=>'required|max:255'
         ]);
@@ -53,7 +54,7 @@ class UserController extends Controller
         if(!$request->sort){$data->sort = 500;}else{$data->sort = $request->sort;}
 
         $data->name = $request->name;
-        $data->first_name = $request->first_name;
+        $data->name = $request->first_name;
         $data->last_name = $request->last_name;
         $data->second_name = $request->second_name;
         $data->email = $request->email;

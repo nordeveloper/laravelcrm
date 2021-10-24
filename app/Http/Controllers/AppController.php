@@ -8,21 +8,12 @@ use Illuminate\Routing\Controller as BaseController;
 class AppController extends BaseController
 {
 
-    protected $user;
-    public $dashboardurl;
-
     public function __construct(){
-
-        $this->dashboardurl = url('dashboard');
 
         $this->middleware(function ($request, $next) {
 
-            if( Auth::check() and Auth::user()->isAdmin() ){
-
-                $this->user = Auth::user();
-            }else{
-
-                return redirect('dashboard/auth');
+            if( !Auth::check() ){
+                return redirect('/');
             }
 
             return $next($request);

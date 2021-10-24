@@ -36,7 +36,7 @@ class PagesController extends AppController
 
         $count = $dbres->count();
 
-        return view('dashboard.page.list', ['result'=>$result, 'pageSize'=>$pageSize, 'count'=>$count]);
+        return view('page.list', ['result'=>$result, 'pageSize'=>$pageSize, 'count'=>$count]);
     }
 
     /**
@@ -46,7 +46,7 @@ class PagesController extends AppController
      */
     public function create()
     {
-        return view('dashboard.page.add');
+        return view('page.add');
     }
 
     /**
@@ -105,7 +105,7 @@ class PagesController extends AppController
      */
     public function edit(Page $page)
     {
-        return view('dashboard.page.edit', ['result'=>$page]);
+        return view('page.edit', ['result'=>$page]);
     }
 
     /**

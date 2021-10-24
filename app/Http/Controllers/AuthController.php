@@ -20,11 +20,11 @@ class AuthController extends Controller
 
         if( !Auth::check() ){
 
-            return view('dashboard.auth.login', ['errors'=>'']);
+            return view('auth.login', ['errors'=>'']);
 
         }else{
 
-            return redirect('/dashboard');
+            return redirect('/');
         }
     }
 
@@ -51,11 +51,11 @@ class AuthController extends Controller
             // $user->last_login = date('Y-m-d H:i:s');
             // $user->save();
 
-            return redirect()->intended('dashboard');
+            return redirect()->intended('/');
 
         }else{
 
-            return view('dashboard.auth.login', ['errors'=>'Invalid login or password']);
+            return view('auth.login', ['errors'=>'Invalid login or password']);
         }
 
         // $this->guard()->attempt(
@@ -65,7 +65,7 @@ class AuthController extends Controller
 
     public function resetpassword()
     {
-        return view('dashboard.auth.resetpassword');
+        return view('auth.resetpassword');
     }
 
     public function passrowdreset(Request $request){

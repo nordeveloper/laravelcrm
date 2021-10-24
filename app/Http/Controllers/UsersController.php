@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers\dashboard;
 
-use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
-
-use App\Models\User;
 use App\Models\Role;
+use App\Models\User;
+
 use App\Models\UserRole;
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Hash;
 
 class UsersController extends Controller
 {
@@ -54,7 +55,6 @@ class UsersController extends Controller
         if(!$request->sort){$data->sort = 500;}else{$data->sort = $request->sort;}
 
         $data->name = $request->name;
-        $data->first_name = $request->first_name;
         $data->last_name = $request->last_name;
         $data->second_name = $request->second_name;
         $data->email = $request->email;
