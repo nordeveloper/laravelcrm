@@ -17,7 +17,8 @@ class ProjectController extends Controller
     public function index()
     {
         $result = Project::all();
-        return view('project.list', ['result'=>$result]);
+        $responsilbleList = User::all();
+        return view('project.list', ['result'=>$result, 'responsilbleList'=>$responsilbleList]);
     }
 
     /**

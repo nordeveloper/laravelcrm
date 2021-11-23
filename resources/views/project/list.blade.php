@@ -1,5 +1,27 @@
 @extends('layouts.main') 
  @section('content')
+ <div class="card">
+    <div class="card-body">
+        <form action="" class="row">
+            <div class="form-grup col-md-3">
+                <label for="">Title</label>
+                <input class="form-control" type="text" name="title">
+            </div>
+
+            <div class="form-grup col-md-3">
+                <label for="">Responsilble</label>
+                <select class="form-control" name="status_id">
+                @if ($responsilbleList)
+                    @foreach ($responsilbleList as $responsilble)
+                    <option value="{{$responsilble->id}}">{{$responsilble->name}} {{$responsilble->last_name}}</option>
+                    @endforeach
+                @endif
+                </select>
+            </div>            
+        </form>
+    </div>
+</div>
+
 <div class="card">
             <div class="card-header">
                 <div class="row">
@@ -19,14 +41,14 @@
                     ID
                 </th>
                 <th>
-                   Date created
-                </th>
-                <th>
-                   Created by
-                </th>
-                <th>
                     Title
                 </th>
+                <th>
+                    Date created
+                 </th>
+                 <th>
+                    Created by
+                 </th>
                 <th>
                     Actions
                 </th>
@@ -35,9 +57,9 @@
             @foreach ($result as $item)
             <tr>
                 <td>{{$item->id}}</td>
-                <td>{{$item->created_at}}</td>
-                <td>{{$item->createdBy->name}}</td>
                 <td>{{$item->title}}</td>
+                <td>{{$item->created_at}}</td>
+                <td>{{$item->createdBy->name}}</td>                
                 <td>
                     <a href="{{ route('project.edit', $item->id)}}" class="btn btn-info btn-sm btn-edit"><i class="fa fa-edit"></i></a>
                     <form class="action-delete" action="{{ route('project.destroy', $item->id)}}" method="post">

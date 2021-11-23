@@ -19,7 +19,9 @@ class TaskController extends Controller
     public function index()
     {
         $result = Task::all();
-        return view('task.list', ['result'=>$result]);
+        $statuslist = TaskStatus::all();
+        $responsilbleList = User::all();
+        return view('task.list', ['result'=>$result, 'statuslist'=>$statuslist, 'responsilbleList'=>$responsilbleList]);
     }
 
     /**

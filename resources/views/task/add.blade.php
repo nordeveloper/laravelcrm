@@ -34,12 +34,15 @@
         </div>
 
         <div class="row form-group">
-            <div class="col-md-4">
+            <div class="col-md-3">
+                <label>Start date</label>
+                <input type="text" class="form-control input-date" name="start_date" value="{{old('finish_date')}}">
+            </div>
+            <div class="col-md-3">
                 <label>Finish date</label>
                 <input type="text" class="form-control input-date" name="finish_date" value="{{old('finish_date')}}">
             </div>
-
-            <div class="col-md-4">
+            <div class="col-md-3">
                 <label>Responsible</label>
                 <select name="responsible_id" class="form-control">
                     <option value=""></option>
@@ -47,15 +50,16 @@
                     <option value="{{$user->id}}">{{$user->name}}</option>  
                     @endforeach
                 </select>
-            </div>        
-    
-            <div class="col-md-4">
+            </div>
+            <div class="col-md-3">
                 <label>Project</label>
                 <select name="project_id" class="form-control">
                     <option value=""></option>
+                    @if (!empty($projects))
                     @foreach ($projects as $project)
                     <option value="{{$project->id}}">{{$project->title}}</option>  
-                    @endforeach
+                    @endforeach                        
+                    @endif
                 </select>
             </div>
         </div>
