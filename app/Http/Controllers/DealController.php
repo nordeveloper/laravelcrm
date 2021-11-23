@@ -17,9 +17,11 @@ class DealController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
+    {          
         $result = Deal::all();
-        return view('deal.list', ['result'=>$result]);
+        $statuslist = DealStage::all();
+        $responsilbleList = User::all();
+        return view('deal.list', ['result'=>$result, 'statuslist'=>$statuslist, 'responsilbleList'=>$responsilbleList]);
     }
 
     /**

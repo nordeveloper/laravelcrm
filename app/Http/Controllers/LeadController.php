@@ -20,7 +20,9 @@ class LeadController extends Controller
     public function index()
     {
         $result = Lead::all();
-        return view('lead.list', ['result'=>$result]);
+        $statuslist = Leadstatus::all();
+        $responsilbleList = User::all();
+        return view('lead.list', ['result'=>$result, 'statuslist'=>$statuslist, 'responsilbleList'=>$responsilbleList]);
     }
 
     /**

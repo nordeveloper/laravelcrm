@@ -14,4 +14,14 @@ class Deal extends Model
     {
         return $this->hasOne(User::class, 'id', 'created_by');
     }
+
+    public function responsible()
+    {
+        return $this->hasOne(User::class, 'id', 'responsible_id');
+    }
+
+    public function status()
+    {
+        return $this->hasOne(DealStage::class, 'id', 'stage_id');
+    }
 }

@@ -1,6 +1,29 @@
 @extends('layouts.main') 
- @section('content')
+@section('content')
+
 <div class="card">
+    <div class="card-body">
+        <form action="" class="row">
+            <div class="form-grup col-md-3">
+                <label for="">Name</label>
+                <input class="form-control" type="text" name="name">
+            </div>
+
+            <div class="form-grup col-md-3">
+                <label for="">Responsilble</label>
+                <select class="form-control" name="status_id">
+                @if ($responsilbleList)
+                    @foreach ($responsilbleList as $responsilble)
+                    <option value="{{$responsilble->id}}">{{$responsilble->name}} {{$responsilble->last_name}}</option>
+                    @endforeach
+                @endif
+                </select>
+            </div>            
+        </form>
+    </div>
+</div>
+ 
+ <div class="card">
             <div class="card-header">
                 <div class="row">
                     <div class="col-md-3">
@@ -11,13 +34,14 @@
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="card-body">
+        
+    <div class="card-body">
          <table class="table table-bordered table-hover">
             <tr>
                 <th>
                     ID
                 </th>
+                <th>Responsible</th>
                 <th>
                    Date created
                 </th>
@@ -35,6 +59,7 @@
             @foreach ($result as $item)
             <tr>
                 <td>{{$item->id}}</td>
+                <td>{{$item->responsible->name}}</td>
                 <td>{{$item->created_at}}</td>
                 <td>{{$item->createdBy->name}}</td>
                 <td>{{$item->name ?? ''}} {{$item->last_name ?? ''}}</td>
@@ -50,5 +75,6 @@
             @endforeach
             @endif
         </table>
-        </div>
+    </div>
+</div>    
 @endsection

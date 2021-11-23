@@ -18,7 +18,8 @@ class ContactController extends Controller
     public function index()
     {
         $result = Contact::all();
-        return view('contact.list', ['result'=>$result]);
+        $responsilbleList = User::all();
+        return view('contact.list', ['result'=>$result, 'responsilbleList'=>$responsilbleList]);
     }
 
     /**

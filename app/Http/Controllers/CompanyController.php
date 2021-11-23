@@ -18,7 +18,8 @@ class CompanyController extends Controller
     public function index()
     {
         $result = Company::all();
-        return view('company.list', ['result'=>$result]);
+        $responsilbleList = User::all();
+        return view('company.list', ['result'=>$result, 'responsilbleList'=>$responsilbleList]);
     }
 
     /**
@@ -74,7 +75,7 @@ class CompanyController extends Controller
     public function edit(Company $company)
     {
         $users = User::all();
-        $sources = Source::all();
+        $sources = Source::all();        
 
         return view('company.edit',['result'=>$company, 'users'=>$users, 'sources'=>$sources]);
     }

@@ -1,34 +1,55 @@
 @extends('layouts.main') 
  @section('content')
+
+ <div class="card">
+    <div class="card-body">
+        <form action="" class="row">
+            <div class="form-grup col-md-3">
+                <label for="">Title</label>
+                <input class="form-control" type="text" name="title">
+            </div>
+
+            <div class="form-grup col-md-3">
+                <label for="">Responsilble</label>
+                <select class="form-control" name="status_id">
+                @if ($responsilbleList)
+                    @foreach ($responsilbleList as $responsilble)
+                    <option value="{{$responsilble->id}}">{{$responsilble->name}} {{$responsilble->last_name}}</option>
+                    @endforeach
+                @endif
+                </select>
+            </div>            
+        </form>
+    </div>
+</div>
+
 <div class="card">
             <div class="card-header">
                 <div class="row">
                     <div class="col-md-3">
-                        <h3 class="h3">{{__('company')}}</h3>
+                        <h3 class="h3">{{__('Company')}}</h3>
                     </div>
                     <div class="col-md-9 text-right">
                         <p><a class="btn btn-success" href="{{route('company.create')}}">{{__('Add')}}</a></p>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="card-body">
+        
+    <div class="card-body">
          <table class="table table-bordered table-hover">
             <tr>
                 <th>
                     ID
                 </th>
                 <th>
-                    Active
+                    Title
                 </th>
+                <th>Responsible</th>             
                 <th>
                    Date created
                 </th>
                 <th>
                    Created by
-                </th>
-                <th>
-                    Title
                 </th>
                 <th>
                     Actions
@@ -38,10 +59,10 @@
             @foreach ($result as $item)
             <tr>
                 <td>{{$item->id}}</td>
-                <td>@if($item->active==1) Yes @else no @endif</td>
+                <td>{{$item->title}}</td>
+                <td>{{$item->responsible->name}}</td>
                 <td>{{$item->created_at}}</td>
                 <td>{{$item->createdBy->name}}</td>
-                <td>{{$item->title}}</td>
                 <td>
                     <a href="{{ route('company.edit', $item->id)}}" class="btn btn-info btn-sm btn-edit"><i class="fa fa-edit"></i></a>
                     <form class="action-delete" action="{{ route('company.destroy', $item->id)}}" method="post">
@@ -54,5 +75,6 @@
             @endforeach
             @endif
         </table>
-        </div>
+    </div>
+</div>        
 @endsection
