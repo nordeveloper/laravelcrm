@@ -42,7 +42,10 @@
 <!-- AdminLTE App -->
 <script src="{{asset('/adminlte/dist/js/adminlte.min.js')}}"></script>
 
-<script src="{{asset('/adminlte/dist/js/dashboard.js')}}"></script>
+<script src="{{asset('/adminlte/dist/js/scripts.js')}}"></script>
+
+<script src="{{asset('/js/app.js')}}"></script>
+
 
 
 @yield('scripts')

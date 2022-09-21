@@ -75,7 +75,7 @@ class ProjectController extends Controller
     {
         $users = User::all();
         $result = Project::find($id);
-        return view('project.add', ['result'=>$result, 'users'=>$users]);
+        return view('project.edit', ['result'=>$result, 'users'=>$users]);
     }
 
     /**

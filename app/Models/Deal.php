@@ -24,4 +24,14 @@ class Deal extends Model
     {
         return $this->hasOne(DealStage::class, 'id', 'stage_id');
     }
+
+    public function contact()
+    {
+        return $this->hasOne(Contact::class, 'id', 'contact_id');
+    }
+
+    public function contacts()
+    {
+        return $this->hasMany(DealContact::class, 'deal_id', 'contact_id');
+    }
 }

@@ -1,5 +1,6 @@
 @extends('layouts.main') 
- @section('content')
+
+@section('content')
 <div class="card">
         <div class="card-header">
             <p class="h4">{{__('Edit')}}: {{$result->title}}</p>
@@ -11,31 +12,35 @@
 
         <div class="form-group">
             <label>Title</label>
-            <input type="text" class="form-control" name="title" value="{{old('title')}}">
+            <input type="text" class="form-control" name="title" value="{{$result->title?? old('title')}}">
         </div>
 
         <div class="form-group">
             <label>Status</label>
             <select name="status_id" class="form-control">
                 <option value=""></option>
+                @if(!empty($statuslist))
                 @foreach ($statuslist as $status)
-                <option value="{{$status->id}}">{{$status->title}}</option>  
+                <option @if( !empty($result->status_id) && $result->status_id==$result->status_id) selected @endif value="{{$status->id}}">{{$status->title}}</option>  
                 @endforeach
+                @endif
             </select>
         </div>
 
         <div class="form-group">
             <label>Amount</label>
-            <input type="text" class="form-control" name="title" value="{{old('amount')}}">
+            <input type="text" class="form-control" name="amount" value="{{$result->amount?? old('amount') }}">
         </div>
 
         <div class="form-group">
             <label>Responsible</label>
             <select name="responsible_id" class="form-control">
                 <option value=""></option>
+                @if(!empty($users))
                 @foreach ($users as $user)
-                <option value="{{$user->id}}">{{$user->name}}</option>  
+                <option @if( !empty($result->responsible_id) && $result->responsible_id==$user->id) selected @endif value="{{$user->id}}">{{$user->name}}</option>  
                 @endforeach
+                @endif
             </select>
         </div>
 
@@ -43,15 +48,17 @@
             <label>Source</label>
             <select name="source_id" class="form-control">
                 <option value=""></option>
+                @if(!empty($sources))
                 @foreach ($sources as $source)
-                <option value="{{$source->id}}">{{$source->title}}</option>  
+                <option @if($result->source_id==$source->id) selected @endif value="{{$source->id}}">{{$source->title}}</option>  
                 @endforeach
+                @endif
             </select>
         </div>
 
         <div class="form-group">
             <label>Comments</label>
-            <textarea class="form-control" name="comments" cols="30" rows="3">{{old('comments')}}</textarea>
+            <textarea class="form-control" name="comments" cols="30" rows="3">{{ $result->comments?? old('comments')}}</textarea>
         </div>
     
         <div class="form-group">

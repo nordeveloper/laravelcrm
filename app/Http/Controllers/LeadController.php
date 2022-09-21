@@ -82,7 +82,8 @@ class LeadController extends Controller
         $users = User::all();
         $statuslist = Leadstatus::all();
         $sources = Source::all();
-        return view('lead.add', ['result'=>$lead, 'statuslist'=>$statuslist,'users'=>$users, 'sources'=>$sources]);
+
+        return view('lead.edit', ['result'=>$lead, 'statuslist'=>$statuslist,'users'=>$users, 'sources'=>$sources]);
     }
 
     /**

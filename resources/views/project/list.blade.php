@@ -12,6 +12,7 @@
                 <label for="">Responsilble</label>
                 <select class="form-control" name="status_id">
                 @if ($responsilbleList)
+                    <option value=""></option>
                     @foreach ($responsilbleList as $responsilble)
                     <option value="{{$responsilble->id}}">{{$responsilble->name}} {{$responsilble->last_name}}</option>
                     @endforeach
@@ -58,7 +59,7 @@
             <tr>
                 <td>{{$item->id}}</td>
                 <td>{{$item->title}}</td>
-                <td>{{$item->created_at}}</td>
+                <td>{{FormatDateTime($item->created_at)}}</td>
                 <td>{{$item->createdBy->name}}</td>                
                 <td>
                     <a href="{{ route('project.edit', $item->id)}}" class="btn btn-info btn-sm btn-edit"><i class="fa fa-edit"></i></a>

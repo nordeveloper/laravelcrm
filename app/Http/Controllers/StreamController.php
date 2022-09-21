@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Streem;
+use App\Models\Stream;
 use Illuminate\Http\Request;
 
 class StreamController extends Controller
@@ -14,7 +14,8 @@ class StreamController extends Controller
      */
     public function index()
     {
-        //
+        $result = Stream::get();
+        return view('stream.list', compact('result'));
     }
 
     /**

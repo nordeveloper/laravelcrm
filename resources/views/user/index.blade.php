@@ -41,9 +41,9 @@
             {{$item->id}}
         </td>
 
-        <td>{{date('d.m.Y', strtotime($item->created_at))}}</td>
+        <td>{{FormatDateTime($item->created_at))}}</td>
         
-        <td>{{date('d.m.Y', strtotime($item->updated_at))}}</td>
+        <td>{{FormatDateTime($item->updated_at))}}</td>
 
         <td>
             {{$item->name}}

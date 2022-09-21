@@ -18,9 +18,11 @@ class DealController extends Controller
      */
     public function index()
     {          
-        $result = Deal::all();
-        $statuslist = DealStage::all();
-        $responsilbleList = User::all();
+        $result = Deal::with('contact')->get();
+
+        $statuslist = false; //DealStage::all();
+        $responsilbleList = false; //User::all();
+
         return view('deal.list', ['result'=>$result, 'statuslist'=>$statuslist, 'responsilbleList'=>$responsilbleList]);
     }
 
@@ -78,7 +80,10 @@ class DealController extends Controller
      */
     public function edit(Deal $deal)
     {
-        return view('deal.edit',['result'=>$deal]);
+        $users = User::all();
+        $stages = DealStage::all();
+        $sources = Source::all();
+        return view('deal.edit',['result'=>$deal, 'stages'=>$stages, 'users'=>$users, 'sources'=>$sources]);
     }
 
     /**

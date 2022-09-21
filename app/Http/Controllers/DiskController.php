@@ -14,7 +14,8 @@ class DiskController extends Controller
      */
     public function index()
     {
-        //
+        $result = Disk::get();
+        return view('disk.list', compact('result'));
     }
 
     /**

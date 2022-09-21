@@ -31,10 +31,10 @@ class TaskController extends Controller
      */
     public function create()
     {
-        $users = User::all();
-        $statuses = TaskStatus::all();
+        $users = User::get();
+        $statuses = TaskStatus::get();
 
-        $projects = Project::all();
+        $projects = Project::get();
 
         return view('task.add', ['users'=>$users, 'statuses'=>$statuses, 'projects'=>$projects]);
     }
@@ -80,9 +80,9 @@ class TaskController extends Controller
      */
     public function edit(Task $task)
     {
-        $users = User::all();
-        $statuses = TaskStatus::all();
-        return view('task.add',['result'=>$task, 'users'=>$users,'statuses'=>$statuses]);
+        $users = User::get();
+        $statuses = TaskStatus::get();
+        return view('task.edit',['result'=>$task, 'users'=>$users,'statuses'=>$statuses]);
     }
 
     /**

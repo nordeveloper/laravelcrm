@@ -85,6 +85,15 @@
                     </a>
                 </li>
 
+                <li class="nav-item">
+                    <a href="/stream" class="nav-link">
+                        <i class="nav-icon fas fa-user-friends"></i>
+                        <p>
+                            Streaam
+                        </p>
+                    </a>
+                </li>
+
                 <li class="nav-item nav-item has-treeview">
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-th"></i>
@@ -144,45 +153,35 @@
                                     Projects
                                 </p>
                             </a>
-                        </li>                        
-
-                        <li class="nav-item">
-                            <a href="/streaam" class="nav-link">
-                                <i class="nav-icon fas fa-user-friends"></i>
-                                <p>
-                                    Streaam
-                                </p>
-                            </a>
                         </li>
-
-                        <li class="nav-item">
-                            <a href="/group" class="nav-link">
-                                <i class="nav-icon fas fa-user-friends"></i>
-                                <p>
-                                   Group
-                                </p>
-                            </a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a href="/disk" class="nav-link">
-                                <i class="nav-icon fas fa-user-friends"></i>
-                                <p>
-                                    Disk
-                                </p>
-                            </a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a href="/department" class="nav-link">
-                                <i class="nav-icon fas fa-user-friends"></i>
-                                <p>
-                                    Department
-                                </p>
-                            </a>
-                        </li>
-
                     </ul>
+                </li>
+
+                <li class="nav-item">
+                    <a href="/department" class="nav-link">
+                        <i class="nav-icon fas fa-user-friends"></i>
+                        <p>
+                            Department
+                        </p>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a href="/group" class="nav-link">
+                        <i class="nav-icon fas fa-user-friends"></i>
+                        <p>
+                           Group
+                        </p>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a href="/disk" class="nav-link">
+                        <i class="nav-icon fas fa-user-friends"></i>
+                        <p>
+                            Disk
+                        </p>
+                    </a>
                 </li>
 
                 <li class="nav-item has-treeview">

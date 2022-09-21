@@ -12,6 +12,7 @@
             <div class="form-grup col-md-3">
                 <label for="">Responsilble</label>
                 <select class="form-control" name="status_id">
+                    <option value=""></option>
                 @if ($responsilbleList)
                     @foreach ($responsilbleList as $responsilble)
                     <option value="{{$responsilble->id}}">{{$responsilble->name}} {{$responsilble->last_name}}</option>
@@ -36,6 +37,7 @@
             </div>
         
     <div class="card-body">
+        <div class="table-responsive">
          <table class="table table-bordered table-hover">
             <tr>
                 <th>
@@ -61,20 +63,23 @@
                 <td>{{$item->id}}</td>
                 <td>{{$item->title}}</td>
                 <td>{{$item->responsible->name}}</td>
-                <td>{{$item->created_at}}</td>
+                <td>{{FormatDateTime($item->created_at)}}</td>
                 <td>{{$item->createdBy->name}}</td>
                 <td>
-                    <a href="{{ route('company.edit', $item->id)}}" class="btn btn-info btn-sm btn-edit"><i class="fa fa-edit"></i></a>
-                    <form class="action-delete" action="{{ route('company.destroy', $item->id)}}" method="post">
-                          @csrf
-                          @method('DELETE')
-                        <button type="submit" class="btn btn-danger btn-sm btn-remove"><i class="far fa-trash-alt"></i></button>
-                    </form>                
+                    <div class="buttons-action">
+                        <a href="{{ route('company.edit', $item->id)}}" class="btn btn-outline-info btn-sm btn-edit mr-2"><i class="fa fa-edit"></i></a>
+                        <form class="action-delete" action="{{ route('company.destroy', $item->id)}}" method="post">
+                              @csrf
+                              @method('DELETE')
+                            <button type="submit" class="btn btn-outline-danger btn-sm btn-remove"><i class="far fa-trash-alt"></i></button>
+                        </form>  
+                    </div>
                 </td>
             </tr>
             @endforeach
             @endif
-        </table>
+        </table>        
+        </div>
     </div>
 </div>        
 @endsection

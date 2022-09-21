@@ -52,7 +52,7 @@ class ContactController extends Controller
         $model->fill($formData);
         $model->save();
 
-        return redirect()->route('company.index')->with('success', 'Record successfully added');
+        return redirect()->route('contact.index')->with('success', 'Record successfully added');
     }
 
     /**
@@ -76,7 +76,7 @@ class ContactController extends Controller
     {
         $users = User::all();
         $sources = Source::all();
-        return view('contact.add', ['result'=>$contact, 'users'=>$users, 'sources'=>$sources]);
+        return view('contact.edit', ['result'=>$contact, 'users'=>$users, 'sources'=>$sources]);
     }
 
     /**
@@ -98,7 +98,7 @@ class ContactController extends Controller
         $model->fill($formData);
         $model->save();
 
-        return redirect()->route('company.index')->with('success', 'Record successfully updated');
+        return redirect()->route('contact.index')->with('success', 'Record successfully updated');
     }
 
     /**

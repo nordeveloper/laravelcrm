@@ -12,7 +12,8 @@
             <div class="form-grup col-md-3">
                 <label for="">Status</label>
                 <select class="form-control" name="status_id">
-                @if ($statuslist)
+                @if($statuslist)
+                    <option value=""></option>
                     @foreach ($statuslist as $status)
                     <option value="{{$status->id}}">{{$status->title}}</option>
                     @endforeach
@@ -25,6 +26,7 @@
                 <select class="form-control" name="user_id">
                 @if ($responsilbleList)
                     @foreach ($responsilbleList as $responsilble)
+                    <option value=""></option>
                     <option value="{{$responsilble->id}}">{{$responsilble->name}} {{$responsilble->last_name}}</option>
                     @endforeach
                 @endif
@@ -36,6 +38,7 @@
                 <select class="form-control" name="created_by">
                 @if ($responsilbleList)
                     @foreach ($responsilbleList as $responsilble)
+                    <option value=""></option>
                     <option value="{{$responsilble->id}}">{{$responsilble->name}} {{$responsilble->last_name}}</option>
                     @endforeach
                 @endif
@@ -66,6 +69,7 @@
                 <th>
                     Title
                 </th>
+                <th>Status</th>
                 <th>
                    Date created
                 </th>
@@ -88,18 +92,21 @@
             <tr>
                 <td>{{$item->id}}</td>
                 <td>{{$item->title}}</td>
-                <td>{{$item->created_at}}</td>
-                <td>{{$item->start_date}}</td>
-                <td>{{$item->finish_date}}</td>
-                <td>{{$item->responsible->name}}</td>
+                <td>{{$item->status->title?? ''}}</td>
+                <td>{{FormatDateTime($item->created_at)}}</td>
+                <td>{{FormatDate($item->start_date)}}</td>
+                <td>{{FormatDate($item->finish_date)}}</td>
+                <td>{{$item->responsible->name?? ''}}</td>
                 <td>{{$item->createdBy->name?? ''}}</td>                
                 <td>
-                    <a href="{{ route('task.edit', $item->id)}}" class="btn btn-info btn-sm btn-edit"><i class="fa fa-edit"></i></a>
-                    <form class="action-delete" action="{{ route('task.destroy', $item->id)}}" method="post">
-                          @csrf
-                          @method('DELETE')
-                        <button type="submit" class="btn btn-danger btn-sm btn-remove"><i class="far fa-trash-alt"></i></button>
-                    </form>                
+                    <div class="buttons-action">
+                        <a href="{{ route('task.edit', $item->id)}}" class="btn btn-outline-info btn-sm btn-edit mr-2"><i class="fa fa-edit"></i></a>
+                        <form class="action-delete" action="{{ route('task.destroy', $item->id)}}" method="post">
+                              @csrf
+                              @method('DELETE')
+                            <button type="submit" class="btn btn-outline-danger btn-sm btn-remove"><i class="far fa-trash-alt"></i></button>
+                        </form>
+                    </div>              
                 </td>
             </tr>
             @endforeach

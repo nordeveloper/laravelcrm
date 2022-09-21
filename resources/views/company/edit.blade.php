@@ -31,9 +31,11 @@
             <label>Responsible</label>
             <select name="responsible_id" class="form-control">
                 <option value=""></option>
+                @if(!empty($users))
                 @foreach ($users as $user)
-                <option value="{{$user->id}}">{{$user->name}}</option>  
+                <option @if( !empty($result->responsible_id) && $result->responsible_id==$user->id) selected @endif value="{{$user->id}}">{{$user->name}}</option>  
                 @endforeach
+                @endif
             </select>
         </div>
 
