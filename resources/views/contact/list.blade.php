@@ -49,21 +49,21 @@
                 <th>
                    Date created
                 </th>
-                {{-- <th>
-                   Created by
-                </th> --}}
                 <th>
-                    Actions
+                   Created by
+                </th>
+                <th>
+                   Actions
                 </th>
             </tr>
             @if($result)
             @foreach ($result as $item)
             <tr>
                 <td>{{$item->id}}</td>
-                <td>{{$item->name ?? ''}} {{$item->last_name ?? ''}}</td>
-                <td>{{$item->responsible->name}}</td>
+                <td>{{$item->first_name}} {{$item->last_name}}</td>
+                <td>{{ (!empty($item->responsible)? $item->responsible->name:'' ) }}</td>
                 <td>{{FormatDateTime($item->created_at)}}</td>
-                {{-- <td>{{$item->createdBy->name}}</td> --}}
+                <td>{{ !empty($item->createdBy)? $item->createdBy->first_name:''}}</td>
                 <td>
                     <div class="buttons-action">
                         <a href="{{ route('contact.edit', $item->id)}}" class="btn btn-outline-info btn-sm btn-edit mr-2"><i class="fa fa-edit"></i></a>
@@ -79,5 +79,28 @@
             @endif
         </table>
     </div>
+
+
+    <div class="card-footer">
+        <div class="row">
+            <div class="col-md-1">
+                Page size:
+            </div>
+            <div class="col-md-1">
+                <form action="">
+                    <select class="form-control" id="pageSize" name="pageSize">
+                        <?php echo PageSiezeSelect(request()->pageSize)?>
+                    </select>
+                </form>
+            </div>
+            <div class="col-md-7">
+                {{$result->links()}}
+            </div>
+            <div class="col-md-2">
+                Count: {{$count}}
+            </div>
+        </div>
+    </div>
+    
 </div>    
 @endsection

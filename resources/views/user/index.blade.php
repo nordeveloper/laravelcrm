@@ -32,7 +32,7 @@
         <th>Last name</th>
         <th>Phone</th>
         <th>Email</th>
-        {{-- <th>Actions</th> --}}
+        <th>Actions</th>
     </tr>
 
     @foreach ($result as $item)
@@ -41,12 +41,12 @@
             {{$item->id}}
         </td>
 
-        <td>{{FormatDateTime($item->created_at))}}</td>
+        <td>{{FormatDateTime($item->created_at)}}</td>
         
-        <td>{{FormatDateTime($item->updated_at))}}</td>
+        <td>{{FormatDateTime($item->updated_at)}}</td>
 
         <td>
-            {{$item->name}}
+            {{$item->first_name}}
         </td>
 
         <td>
@@ -61,14 +61,14 @@
             {{$item->email}}
         </td>
 
-        {{-- <td>
-        <a class="btn btn-sm btn-info" href="users/{{$item->id}}/edit"><i class="fa fa-edit"></i></a>
-        <form class="action-delete" action="{{ route('users.destroy', $item->id)}}" method="post">
+        <td>
+        <a class="btn btn-sm btn-info" href="{{route('user.edit', $item->id)}}"><i class="fa fa-edit"></i></a>
+        <form class="action-delete" action="{{ route('user.destroy', $item->id)}}" method="post">
             @csrf
             @method('DELETE')
             <button type="submit" class="btn btn-danger btn-sm"><i class="far fa-trash-alt"></i></button>
         </form>
-        </td> --}}
+        </td>
     </tr>
     @endforeach
 </table>

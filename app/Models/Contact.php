@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
 class Contact extends Model
 {
     use HasFactory;
-    protected $fillable = ['name', 'last_name', 'comments', 'responsible_id', 'source_id', 'created_by', 'modified_by'];
+    protected $fillable = ['first_name', 'last_name', 'comments', 'responsible_id', 'source_id', 'created_by', 'modified_by'];
 
     /*
        * Get the user associated with the Contact

@@ -34,7 +34,7 @@
             <select name="responsible_id" class="form-control">
                 <option value=""></option>
                 @foreach ($users as $user)
-                <option value="{{$user->id}}">{{$user->name}}</option>  
+                <option value="{{$user->id}}">{{$user->first_name}}</option>  
                 @endforeach
             </select>
         </div>

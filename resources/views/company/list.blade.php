@@ -81,5 +81,27 @@
         </table>        
         </div>
     </div>
+
+    <div class="card-footer">
+        <div class="row">
+            <div class="col-md-1">
+                Page size:
+            </div>
+            <div class="col-md-1">
+                <form action="">
+                    <select class="form-control" id="pageSize" name="pageSize">
+                        <?php echo PageSiezeSelect(request()->pageSize)?>
+                    </select>
+                </form>
+            </div>
+            <div class="col-md-7">
+                {{$result->links()}}
+            </div>
+            <div class="col-md-2">
+                Count: {{$count}}
+            </div>
+        </div>
+    </div>
+
 </div>        
 @endsection

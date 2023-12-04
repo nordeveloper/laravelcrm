@@ -39,7 +39,7 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('/stream', StreamController::class);
     Route::resource('/disk', DiskController::class);
     Route::resource('/group', GroupController::class);
-    Route::resource('/department', DepartmentController::class);
+    Route::resource('/departments', DepartmentController::class);
     
     Route::resource('/user', UserController::class);
     Route::resource('/roles', RolesController::class);

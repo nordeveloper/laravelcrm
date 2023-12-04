@@ -34,6 +34,12 @@
             <label>Contact</label>
             <select name="contact_id" class="form-control">
                 <option value=""></option>
+                <option value=""></option>
+                @if(!empty($contacts))
+                @foreach ($contacts as $contact)
+                <option value="{{$user->id}}">{{$contact->first_name}}</option>  
+                @endforeach
+                @endif
             </select>
         </div>
 
@@ -42,7 +48,7 @@
             <select name="responsible_id" class="form-control">
                 <option value=""></option>
                 @foreach ($users as $user)
-                <option value="{{$user->id}}">{{$user->name}}</option>  
+                <option value="{{$user->id}}">{{$user->first_name}}</option>  
                 @endforeach
             </select>
         </div>
@@ -51,9 +57,11 @@
             <label>Source</label>
             <select name="source_id" class="form-control">
                 <option value=""></option>
+                @if(!empty($sources))
                 @foreach ($sources as $source)
                 <option value="{{$source->id}}">{{$source->title}}</option>  
                 @endforeach
+                @endif
             </select>
         </div>
 

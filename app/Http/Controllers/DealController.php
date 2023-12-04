@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Deal;
 use App\Models\User;
 use App\Models\Source;
+use App\Models\Contact;
 use App\Models\DealStage;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -33,10 +34,11 @@ class DealController extends Controller
      */
     public function create()
     {
-        $users = User::all();
-        $stages = DealStage::all();
-        $sources = Source::all();
-        return view('deal.add', ['stages'=>$stages, 'users'=>$users, 'sources'=>$sources]);
+        $users = User::get();
+        $stages = DealStage::get();
+        $sources = Source::get();
+        $contacts = Contact::get();
+        return view('deal.add', compact('stages', 'users', 'sources', 'contacts'));
     }
 
     /**

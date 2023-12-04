@@ -34,6 +34,12 @@
             <label>Contact</label>
             <select name="contact_id" class="form-control">
                 <option value=""></option>
+                <option value=""></option>
+                @if(!empty($contacts))
+                @foreach ($contacts as $contact)
+                <option value="{{$user->id}}">{{$contact->first_name}}</option>  
+                @endforeach
+                @endif
             </select>
         </div>
 
@@ -43,7 +49,7 @@
                 <option value=""></option>
                 @if(!empty($users))
                 @foreach ($users as $user)
-                <option @if( !empty($result->responsible_id) && $result->responsible_id==$user->id) selected @endif value="{{$user->id}}">{{$user->name}}</option>  
+                <option @if( !empty($result->responsible_id) && $result->responsible_id==$user->id) selected @endif value="{{$user->id}}">{{$user->first_name}}</option>  
                 @endforeach
                 @endif
             </select>

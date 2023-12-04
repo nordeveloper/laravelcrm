@@ -85,14 +85,14 @@
                     </a>
                 </li>
 
-                <li class="nav-item">
+                {{-- <li class="nav-item">
                     <a href="/stream" class="nav-link">
                         <i class="nav-icon fas fa-user-friends"></i>
                         <p>
                             Streaam
                         </p>
                     </a>
-                </li>
+                </li> --}}
 
                 <li class="nav-item nav-item has-treeview">
                     <a href="#" class="nav-link">
@@ -102,7 +102,7 @@
                     <ul class="nav nav-treeview">
 
                         <li class="nav-item">
-                            <a href="/lead" class="nav-link">
+                            <a href="{{route('lead.index')}}" class="nav-link">
                                 <i class="nav-icon fas fa-user-friends"></i>
                                 <p>
                                    Lead
@@ -111,7 +111,7 @@
                         </li>
 
                         <li class="nav-item">
-                            <a href="/deal" class="nav-link">
+                            <a href="{{route('deal.index')}}" class="nav-link">
                                 <i class="nav-icon fas fa-user-friends"></i>
                                 <p>
                                    Deal
@@ -120,7 +120,7 @@
                         </li>
 
                         <li class="nav-item">
-                            <a href="/company" class="nav-link">
+                            <a href="{{route('company.index')}}" class="nav-link">
                                 <i class="nav-icon fas fa-user-friends"></i>
                                 <p>
                                    Company
@@ -129,7 +129,7 @@
                         </li>
 
                         <li class="nav-item">
-                            <a href="/contact" class="nav-link">
+                            <a href="{{route('contact.index')}}" class="nav-link">
                                 <i class="nav-icon fas fa-user-friends"></i>
                                 <p>
                                     Contact
@@ -138,7 +138,7 @@
                         </li>
 
                         <li class="nav-item">
-                            <a href="/task" class="nav-link">
+                            <a href="{{route('task.index')}}" class="nav-link">
                                 <i class="nav-icon fas fa-user-friends"></i>
                                 <p>
                                     Task
@@ -147,7 +147,7 @@
                         </li>
 
                         <li class="nav-item">
-                            <a href="/project" class="nav-link">
+                            <a href="{{route('project.index')}}" class="nav-link">
                                 <i class="nav-icon fas fa-user-friends"></i>
                                 <p>
                                     Projects
@@ -158,14 +158,14 @@
                 </li>
 
                 <li class="nav-item">
-                    <a href="/department" class="nav-link">
+                    <a href="{{route('departments.index')}}" class="nav-link">
                         <i class="nav-icon fas fa-user-friends"></i>
                         <p>
-                            Department
+                            Departments
                         </p>
                     </a>
                 </li>
-
+{{-- 
                 <li class="nav-item">
                     <a href="/group" class="nav-link">
                         <i class="nav-icon fas fa-user-friends"></i>
@@ -173,7 +173,7 @@
                            Group
                         </p>
                     </a>
-                </li>
+                </li> --}}
 
                 <li class="nav-item">
                     <a href="/disk" class="nav-link">
@@ -192,7 +192,7 @@
                     <ul class="nav nav-treeview">
 
                         <li class="nav-item">
-                            <a href="/user" class="nav-link">
+                            <a href="{{route('user.index')}}" class="nav-link">
                                 <i class="nav-icon fas fa-user-friends"></i>
                                 <p>
                                     Users
@@ -200,21 +200,21 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="/roles" class="nav-link">
+                            <a href="{{route('roles.index')}}" class="nav-link">
                                 <i class="nav-icon fas fa-th"></i>
                                 <p>
                                     Roles
                                 </p>
                             </a>
                         </li>
-                        <li class="nav-item">
+                        {{-- <li class="nav-item">
                             <a href="/permission" class="nav-link">
                                 <i class="nav-icon fas fa-th"></i>
                                 <p>
                                     Permissions
                                 </p>
                             </a>
-                        </li>
+                        </li> --}}
                     </ul>
                 </li>
 

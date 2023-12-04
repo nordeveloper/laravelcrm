@@ -17,8 +17,8 @@ class ContactController extends Controller
      */
     public function index()
     {
-        $result = Contact::all();
-        $responsilbleList = User::all();
+        $result = Contact::paginate();
+        $responsilbleList = User::get();
         return view('contact.list', ['result'=>$result, 'responsilbleList'=>$responsilbleList]);
     }
 
@@ -29,8 +29,8 @@ class ContactController extends Controller
      */
     public function create()
     {
-        $users = User::all();
-        $sources = Source::all();
+        $users = User::get();
+        $sources = Source::get();
         return view('contact.add', ['users'=>$users, 'sources'=>$sources]);
     }
 
@@ -74,8 +74,8 @@ class ContactController extends Controller
      */
     public function edit(Contact $contact)
     {
-        $users = User::all();
-        $sources = Source::all();
+        $users = User::get();
+        $sources = Source::get();
         return view('contact.edit', ['result'=>$contact, 'users'=>$users, 'sources'=>$sources]);
     }
 
